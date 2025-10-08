@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Password Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-custom {
+            background: #ff6f61;
+            color: white;
+            font-weight: bold;
+        }
+
+        .password-box {
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #00e676;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h2 class="fw-bold text-center mb-4">🔑 Password Generator</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card p-4 bg-dark text-light">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Password Length</label>
+                            <input type="number" class="form-control" name="length" min="4" max="50" required>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="upper" id="upper">
+                            <label class="form-check-label" for="upper">Include Uppercase Letters (A-Z)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="digits" id="digits">
+                            <label class="form-check-label" for="digits">Include Numbers (0-9)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="symbols" id="symbols">
+                            <label class="form-check-label" for="symbols">Include Symbols (!@#$...)</label>
+                        </div>
+                        <button type="submit" class="btn btn-custom mt-3">Generate Password</button>
+                        <a href="/" class="btn btn-secondary mt-3">Clear</a>
+                    </form>
+                    {% if error %}
+                    <div class="alert alert-danger mt-3">{{ error }}</div>
+                    {% endif %}
+                    {% if password %}
+                    <div class="password-box mt-3 text-center">{{ password }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
